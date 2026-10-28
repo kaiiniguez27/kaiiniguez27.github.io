@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
     <div class="wrap">
       <a class="home" href="./">Kai Iniguez</a>
       <nav aria-label="Main">
+        <a class="optional" href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a class="optional" href="#skills">Skills</a>
@@ -27,8 +28,8 @@
   <main>
     <!-- ============ INTRO ============ -->
     <div class="wrap">
-      <section class="hero">
-        <h1 class="display">Kai Iniguez</h1>
+      <section class="masthead">
+        <h1 class="display" id="name">Kai Iniguez</h1>
         <div class="intro">
           <p class="lede">
             I'm an electrical engineering student at Cal Poly San Luis Obispo,
@@ -53,6 +54,32 @@
         </p>
       </section>
     </div>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section" id="education">
+      <div class="wrap">
+        <h2>Education</h2>
+        <div class="edu">
+          <div>
+            <h3>California Polytechnic State University, San Luis Obispo</h3>
+            <p class="org">B.S. Electrical Engineering, expected May 2027</p>
+            <p class="edu-stats">3.5 GPA<br>Dean's List</p>
+          </div>
+          <div>
+            <h3>Relevant coursework</h3>
+            <ul class="courses">
+              <li>Phased Array Antennas (graduate)</li>
+              <li>Wireless Communications</li>
+              <li>Communication Systems</li>
+              <li>Electromagnetic Waves</li>
+              <li>Classical Control Systems and Lab</li>
+              <li>Semiconductor Device Electronics and Lab</li>
+              <li>Digital Electronics and Integrated Circuits and Lab</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ============ PROJECTS ============
          To add a project: copy one <a class="project"> block, change the
@@ -156,32 +183,6 @@
               </ul>
             </div>
           </li>
-          <li>
-            <div class="when">Sep 2025 – Jun 2026</div>
-            <div>
-              <h3>High Voltage Subteam Member</h3>
-              <p class="org">Cal Poly Racing, Formula SAE Electric</p>
-              <ul>
-                <li>Designed and fabricated portions of the Tractive System Active Light PCB in Altium.</li>
-                <li>Worked on high-voltage wiring, safety systems and subsystem integration on the car.</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">Jan 2024 – present</div>
-            <div>
-              <h3>Member</h3>
-              <p class="org">Power Engineering Society, Cal Poly</p>
-            </div>
-          </li>
-          <li>
-            <div class="when">Expected May 2027</div>
-            <div>
-              <h3>B.S. Electrical Engineering</h3>
-              <p class="org">California Polytechnic State University, San Luis Obispo. 3.5 GPA, Dean's List.</p>
-              <p>Relevant courses: Phased Array Antennas (graduate), Wireless Communications, Communication Systems, Electromagnetic Waves, Control Systems, Semiconductor Device Electronics, Digital Electronics and Integrated Circuits.</p>
-            </div>
-          </li>
         </ol>
       </div>
     </section>
@@ -229,5 +230,21 @@
     <div class="wrap">Kai Iniguez, 2026. Hand-built HTML and CSS, hosted on GitHub Pages.</div>
   </footer>
 
+  <script>
+    // Scale the name so it spans the full width of the page.
+    (function () {
+      var name = document.getElementById("name");
+      if (!name) return;
+      function fit() {
+        name.style.fontSize = "100px";
+        var box = name.parentElement.clientWidth;
+        var w = name.getBoundingClientRect().width;
+        if (w > 0) name.style.fontSize = (100 * box / w * 0.995) + "px";
+      }
+      fit();
+      if (document.fonts) document.fonts.ready.then(fit);
+      window.addEventListener("resize", fit);
+    })();
+  </script>
 </body>
 </html>

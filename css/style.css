@@ -113,29 +113,29 @@ p { margin: 0 0 1rem; max-width: var(--measure); }
 
 /* ---------- hero ---------- */
 
-.hero {
-  padding: clamp(3rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 4.5rem);
+/* Name spans the full width (a small script in index.html sizes it);
+   the description sits underneath. */
+.masthead {
+  padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(3rem, 6vw, 4.5rem);
 }
-/* name runs the full width of the page */
-.hero .display {
-  font-size: clamp(3.2rem, 14.5vw, 10.75rem);
-  font-variation-settings: "wdth" 100;
-  font-stretch: 100%;
-  letter-spacing: -0.025em;
-  line-height: 0.88;
-  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+.masthead .display {
+  display: inline-block;
+  font-size: clamp(3rem, 14vw, 10rem);
+  white-space: nowrap;
+  line-height: 0.9;
+  margin: 0 0 clamp(1.75rem, 4vw, 2.75rem);
 }
-.hero .intro {
+.masthead .intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0 clamp(1.5rem, 4vw, 3.5rem);
 }
-.hero .lede {
+.masthead .lede {
   font-size: 1.15rem;
   margin: 0 0 1rem;
   max-width: 48ch;
 }
-.hero .links {
+.masthead .links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem 1.4rem;
@@ -395,7 +395,8 @@ figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; max-wid
 /* ---------- responsive ---------- */
 
 @media (max-width: 900px) {
-  .hero .intro { grid-template-columns: 1fr; }
+  .masthead .intro { grid-template-columns: 1fr; }
+  .edu { grid-template-columns: 1fr; }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .skills { grid-template-columns: repeat(2, 1fr); }
   .detail-body { grid-template-columns: 1fr; }
@@ -436,3 +437,25 @@ figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; max-wid
   padding: 0.2rem 0 0.2rem 0.9rem;
   color: var(--muted);
 }
+
+/* ---------- education ---------- */
+
+.edu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem clamp(1.5rem, 4vw, 3.5rem);
+}
+.edu .org { color: var(--muted); margin: 0 0 1rem; }
+.edu-stats {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-variation-settings: "wdth" 75;
+  font-stretch: 75%;
+  line-height: 1.2;
+}
+.courses {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--ink);
+}
+.courses li { padding: 0.15rem 0; }
