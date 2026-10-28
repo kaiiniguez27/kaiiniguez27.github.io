@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RC car embedded control system | Kai Iniguez</title>
-  <meta name="description" content="Firmware in C for an STM32 that drives, steers and responds to a wireless controller in real time.">
+  <title>Bluetooth-controlled RC car | Kai Iniguez</title>
+  <meta name="description" content="A Bluetooth-controlled RC car built around an STM32 Nucleo board.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=7">
+  <link rel="stylesheet" href="../css/style.css?v=8">
 </head>
 <body>
 
@@ -28,41 +28,70 @@
     <a class="back" href="../#projects">All projects</a>
 
     <header class="detail-head">
-      <h1 class="display">RC car embedded control system</h1>
-      <p class="lede">Firmware in C for an STM32 that drives, steers and responds to a wireless controller in real time.</p>
+      <h1 class="display">Bluetooth-controlled RC car</h1>
+      <p class="lede">A rear-wheel-drive RC car built from parts around an STM32 Nucleo board and driven from a phone over Bluetooth. I wrote the Bluetooth firmware and tied it into the motor and steering code.</p>
     </header>
 
-    <figure class="hero-img">
-      <img src="../assets/img/rccar-cover.svg" alt="RC car control system">
+    <figure class="hero-img natural">
+      <a href="../assets/img/rccar-schematic.png"><img src="../assets/img/rccar-schematic.png" alt="System schematic: Nucleo L4A6ZG board connected to an HM-10 Bluetooth module, Quicrun 1060 ESC, SG90 steering servo, headlight LEDs, 7.4 V LiPo battery and Tamiya 540 motor" width="1400" height="737"></a>
+      <figcaption>System schematic. Click to open full size.</figcaption>
     </figure>
 
     <div class="detail-body">
       <article class="prose">
         <h2>Overview</h2>
-        <p>The goal was a car that feels responsive to drive, which meant the firmware had to react to the controller, update the motor and steering, and handle the peripherals without anything blocking anything else.</p>
+        <p>For our EE 329 final project, my team of three built an RC car from scratch: chassis, drivetrain, electronics and firmware. A phone app sends single-character commands over Bluetooth, and the STM32 turns them into PWM signals for the motor's speed controller and the steering servo.</p>
 
         <h2>How it works</h2>
         <ul>
-          <li><strong>Motor and steering.</strong> Hardware timers generate PWM for the motor driver and steering servo, so the outputs stay steady no matter what the CPU is doing.</li>
-          <li><strong>Inputs.</strong> Controller commands come in over serial, with interrupts keeping the car responsive to them.</li>
-          <li><strong>Integration.</strong> I brought up and debugged the wireless, motor-driver and steering hardware together, tracking down the issues that only showed up once everything was connected.</li>
+          <li><strong>Wireless link.</strong> An HM-10 Bluetooth Low Energy module talks to the STM32 over USART2 at 9600 baud. Incoming characters are stored by an interrupt into a 64-character circular buffer, so no command is lost while the main loop is busy.</li>
+          <li><strong>Drive.</strong> A Tamiya 540 brushed motor drives the rear wheels through a 22-to-87-tooth gear reduction. A Hobbywing Quicrun 1060 ESC sets its speed and direction from a 50 Hz PWM signal on TIM2 channel 1.</li>
+          <li><strong>Steering.</strong> An SG90 servo on TIM2 channel 2 turns the front wheels: 2000 µs for left, 1500 µs for center and 1000 µs for right.</li>
+          <li><strong>Gentle throttle.</strong> Each forward or reverse command steps the ESC pulse by 2 µs, between 1550 and 1700 µs forward and 1400 and 1300 µs reverse, so the car speeds up gradually instead of jumping to full power.</li>
+          <li><strong>Safe start-up.</strong> On power-up the firmware sends the ESC a neutral 1500 µs pulse, centers the steering and waits 3 seconds for the ESC to arm before it accepts any commands.</li>
         </ul>
-        <!-- Add: the hardest bug you found and how you found it. That's the most convincing paragraph on a page like this. -->
 
-        <figure class="pair">
-          <figure><img src="../assets/img/rccar-block.svg" alt="Firmware and hardware block diagram"><figcaption>Firmware and hardware block diagram.</figcaption></figure>
-          <figure><img src="../assets/img/rccar-scope.svg" alt="PWM output on the scope"><figcaption>PWM output on the scope.</figcaption></figure>
+        <h2>My part</h2>
+        <p>I wrote the HM-10 Bluetooth driver and the command interface that connects it to the motor and servo modules, so each command from the phone triggers the right action and sends a confirmation back to the phone. I also wrote the software architecture and behavior sections of our report. Dante Wong wrote the ESC and motor control and built the rear drivetrain; Chance Kim wrote the steering control and led the chassis build.</p>
+
+        <h2>Commands</h2>
+        <table class="data">
+          <thead><tr><th>Send</th><th>What the car does</th></tr></thead>
+          <tbody>
+            <tr><td>F</td><td>Start moving forward, or speed up</td></tr>
+            <tr><td>B</td><td>Start reversing, or reverse faster</td></tr>
+            <tr><td>S</td><td>Stop (neutral pulse to the ESC)</td></tr>
+            <tr><td>L / R / C</td><td>Steer left, right or center</td></tr>
+            <tr><td>H / X</td><td>Headlights on or off</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Firmware structure</h2>
+        <p>The code is split into modules by peripheral: <code>bluetooth.c</code> for the UART and receive buffer, <code>timer.c</code> for the ESC PWM, <code>servo.c</code> for steering, <code>led.c</code> for the headlights and <code>delay.c</code> for SysTick timing. <code>main.c</code> initializes everything, then loops forever reading commands from the buffer and dispatching them.</p>
+
+        <figure class="narrow">
+          <img src="../assets/img/rccar-flowchart.png" alt="Flowchart: initialize, set safe start-up state, wait for Bluetooth input, read command, then stop, toggle headlights, steer, drive or ignore invalid input, and repeat" width="828" height="1061">
+          <figcaption>Main program flow.</figcaption>
         </figure>
+
+        <h2>The build</h2>
+        <ul class="numbers">
+          <li><strong>~25 min</strong>estimated runtime on a 5200 mAh 2S LiPo</li>
+          <li><strong>2.8 lb</strong>total weight, 276 × 239 × 67 mm</li>
+          <li><strong>$184</strong>total parts cost, including tax</li>
+        </ul>
+        <p>The motor and ESC run straight from the 7.4 V battery. The ESC's built-in 5 V regulator powers the steering servo, and everything shares a common ground with the Nucleo board.</p>
       </article>
 
       <aside>
         <table class="specs">
-          <tr><th>Context</th><td>Course project, Jan – Jun 2026</td></tr>
-          <tr><th>MCU</th><td>STM32</td></tr>
-          <tr><th>Tools</th><td>C, STM32 toolchain, oscilloscope</td></tr>
-          <tr><th>Topics</th><td>GPIO, PWM, timers, interrupts, UART</td></tr>
+          <tr><th>Context</th><td>EE 329 final project, Spring 2026</td></tr>
+          <tr><th>Team</th><td>Kai Iniguez, Chance Kim, Dante Wong</td></tr>
+          <tr><th>My role</th><td>Bluetooth firmware and command interface</td></tr>
+          <tr><th>MCU</th><td>STM32L4A6ZG (Nucleo board)</td></tr>
+          <tr><th>Tools</th><td>C, STM32CubeIDE, HAL</td></tr>
+          <tr><th>Topics</th><td>UART, interrupts, circular buffers, timer PWM</td></tr>
         </table>
-
       </aside>
     </div>
 

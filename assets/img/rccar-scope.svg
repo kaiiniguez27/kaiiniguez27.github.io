@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
-<rect width="1200" height="900" fill="#e3e8e4"/>
-<rect x="24" y="24" width="1152" height="852" fill="none" stroke="#b9c3bd" stroke-width="3" stroke-dasharray="14 10"/>
-<text x="600.0" y="444.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" fill="#5b6672">PWM capture on the scope</text>
-<text x="600.0" y="506.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" fill="#8a949c">replace assets/img/rccar-scope.svg</text>
-</svg>
