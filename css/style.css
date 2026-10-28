@@ -423,7 +423,7 @@ figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; max-wid
 
 /* two-column project grid */
 .grid.two { grid-template-columns: repeat(2, 1fr); }
-.grid.two .thumb { aspect-ratio: 16 / 10; }
+.grid.two .thumb { aspect-ratio: 4 / 3; }
 
 @media (max-width: 640px) {
   .feature.flip { grid-template-columns: 1fr; }
@@ -461,4 +461,4 @@ figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; max-wid
 .courses li { padding: 0.15rem 0; }
 
 /* cover image shown at its own shape instead of cropped */
-.hero-img.natural img { aspect-ratio: auto; }
+.hero-img.natural img { aspect-ratio: auto; max-width: 760px; }
