@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automatically tuned HF magnetic loop antenna | Kai Iniguez</title>
+  <meta name="description" content="Our senior project: a compact loop antenna that covers 7–14 MHz by retuning itself, designed for Hascall-Denke for military use.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="home" href="../">Kai Iniguez</a>
+      <nav aria-label="Main">
+        <a href="../#projects">Projects</a>
+        <a href="../#experience">Experience</a>
+        <a class="optional" href="../#skills">Skills</a>
+        <a href="../assets/Kai-Iniguez-Resume.pdf">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="../#projects">All projects</a>
+
+    <header class="detail-head">
+      <h1 class="display">Automatically tuned HF magnetic loop antenna</h1>
+      <p class="lede">Our senior project: a compact loop antenna that covers 7–14 MHz by retuning itself, designed for Hascall-Denke for military use.</p>
+    </header>
+
+    <figure class="hero-img">
+      <img src="../assets/img/loop-cover.svg" alt="HF magnetic loop antenna">
+    </figure>
+
+    <div class="detail-body">
+      <article class="prose">
+        <p class="status">This project is in progress. Results and prototype photos will go here as we build and test.</p>
+
+        <h2>The problem</h2>
+        <p>A full-size antenna for 7 MHz is around 20 meters long, which isn't practical to carry or set up quickly. A small magnetic loop fits in a fraction of that space, but its bandwidth is so narrow that it has to be retuned for almost every frequency change. Our job is to make that retuning automatic so the operator never has to touch it.</p>
+
+        <h2>Approach</h2>
+        <ul>
+          <li><strong>Loop geometry.</strong> Sizing and optimizing the loop in Ansys HFSS, looking at gain, bandwidth, efficiency and radiation pattern across the band.</li>
+          <li><strong>Matching.</strong> Designing a matching network that presents a nominal 50 Ω to the radio.</li>
+          <li><strong>Tuning.</strong> An electrically actuated tuning element that moves the resonance to whatever frequency is being used.</li>
+          <li><strong>Build and test.</strong> Prototyping the antenna and checking it on a VNA against the simulation.</li>
+        </ul>
+        <!-- Add: what you personally own on the team (e.g. HFSS modeling, the matching network, the tuning control). -->
+
+        <figure class="pair">
+          <figure><img src="../assets/img/loop-hfss.svg" alt="HFSS model of the loop"><figcaption>HFSS model of the loop.</figcaption></figure>
+          <figure><img src="../assets/img/loop-tuning.svg" alt="Matching network and tuning mechanism"><figcaption>Matching network and tuning mechanism.</figcaption></figure>
+        </figure>
+
+        <h2>Results</h2>
+        <p>Coming soon: simulated and measured return loss across 7–14 MHz, efficiency, and how quickly the system retunes.</p>
+      </article>
+
+      <aside>
+        <table class="specs">
+          <tr><th>Context</th><td>Cal Poly senior project, Aug 2026 – present</td></tr>
+          <tr><th>Sponsor</th><td>Hascall-Denke</td></tr>
+          <tr><th>Band</th><td>7–14 MHz (HF)</td></tr>
+          <tr><th>Team</th><td>3 students</td></tr>
+          <tr><th>Tools</th><td>Ansys HFSS, VNA</td></tr>
+          <tr><th>Status</th><td>In progress</td></tr>
+        </table>
+
+      </aside>
+    </div>
+
+    <nav class="next" aria-label="More projects">
+      <a href="phased-array.html">Previous: 28 GHz phased array</a>
+      <a href="tsal-pcb.html">Next: TSAL board</a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Kai Iniguez, 2026. Hand-built HTML and CSS, hosted on GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>

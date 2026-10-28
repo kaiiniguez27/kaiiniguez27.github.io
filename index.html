@@ -1,113 +1,233 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Kai Iniguez — Electrical Engineering portfolio featuring RF, antenna, and wireless-power projects." />
-    <title>Kai Iniguez | Electrical Engineering</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="nav">
-      <a class="wordmark" href="#top">KAI INIGUEZ<span>.</span></a>
-      <button class="menu-button" aria-label="Open navigation" aria-expanded="false">Menu</button>
-      <nav aria-label="Main navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kai Iniguez | Electrical Engineering</title>
+  <meta name="description" content="Kai Iniguez, electrical engineering student at Cal Poly SLO. Antenna design, RF test and measurement, and embedded hardware projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="home" href="./">Kai Iniguez</a>
+      <nav aria-label="Main">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a class="optional" href="#skills">Skills</a>
+        <a href="assets/Kai-Iniguez-Resume.pdf">Résumé</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main id="top">
+  <main>
+    <!-- ============ INTRO ============ -->
+    <div class="wrap">
       <section class="hero">
-        <p class="eyebrow"><span></span> Electrical Engineering · RF & Antennas</p>
-        <h1>Building systems<br />that <em>communicate.</em></h1>
-        <div class="hero-bottom">
-          <p class="intro">I’m Kai, an electrical engineering student interested in antenna design, RF systems, wireless power, and hands-on test engineering.</p>
-          <a class="circle-link" href="#work" aria-label="See selected work">↓</a>
-        </div>
-        <div class="signal-line" aria-hidden="true">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
-      </section>
-
-      <section class="selected-work" id="work">
-        <div class="section-heading">
-          <p class="eyebrow">01 / Selected work</p>
-          <p>Design, simulation, measurement, and iteration.</p>
+        <div>
+          <h1 class="display">Kai<br>Iniguez</h1>
+          <p class="lede">
+            Electrical engineering student at Cal Poly San Luis Obispo,
+            graduating May 2027. I work on antennas and RF systems: simulating
+            them in HFSS, then finding out on the VNA what they actually do.
+          </p>
+          <p class="links">
+            <a href="mailto:kaiiniguez27@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/kai-iniguez">LinkedIn</a>
+            <a href="https://github.com/kaiiniguez27">GitHub</a>
+            <a href="assets/Kai-Iniguez-Resume.pdf">Résumé (PDF)</a>
+          </p>
         </div>
 
-        <article class="project project-featured">
-          <div class="project-visual antenna-visual">
-            <div class="grid-plane"></div><div class="patch patch-one"></div><div class="patch patch-two"></div>
-            <div class="feed-line"></div><div class="axis x">x</div><div class="axis y">y</div>
-            <span class="visual-label label-top">STACKED RADIATOR</span><span class="visual-label label-bottom">28.0 GHz</span>
+        <div class="scope">
+          <img src="assets/vna.svg" alt="Network analyzer trace showing an antenna's return loss dipping at 28 GHz" width="400" height="240">
+          <div class="readout" aria-hidden="true">
+            <span>S11 <b>Log Mag</b> 10 dB/div</span>
+            <span>Start 24 GHz</span>
+            <span>Stop 32 GHz</span>
           </div>
-          <div class="project-copy">
-            <p class="project-number">PROJECT 01</p>
-            <h2><a class="project-title-link" href="projects/28ghz-stacked-patch.html">28 GHz stacked<br />patch antenna</a></h2>
-            <p>A stacked microstrip patch design developed in Ansys HFSS, with the next phase focused on a 4 × 4 array, feed-network design, and beam-steering analysis.</p>
-            <ul class="tags"><li>HFSS</li><li>mmWave</li><li>Microstrip</li><li>Array Design</li></ul>
-            <a class="text-link" href="projects/28ghz-stacked-patch.html">View case study <span>→</span></a>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ PROJECTS ============
+         To add a project: copy one <a class="project"> block, change the
+         link, image, title and text, then copy a page in /projects. -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <h2>Projects</h2>
+
+        <a class="feature" href="projects/phased-array.html">
+          <div class="thumb">
+            <img src="assets/img/array-cover.svg" alt="HFSS model of a 4 by 4 patch antenna array" loading="lazy">
           </div>
-        </article>
+          <div>
+            <p class="kind">Independent project, Aug 2026 – present</p>
+            <h3>28 GHz phased array for 5G beam steering</h3>
+            <p>
+              A 16-element mmWave array modeled in Ansys HFSS. I'm steering the
+              beam electronically and measuring what it costs in gain,
+              sidelobes and scan loss, including what happens when elements
+              fail or phase shifters are off.
+            </p>
+            <p class="tools">Ansys HFSS, MATLAB, array theory</p>
+          </div>
+        </a>
 
-        <div class="project-grid">
-          <article class="project project-small">
-            <div class="project-visual power-visual">
-              <div class="plate plate-a"></div><div class="plate plate-b"></div><div class="field f1"></div><div class="field f2"></div><div class="field f3"></div>
-              <span class="visual-label">E-FIELD COUPLING</span>
+        <a class="feature flip" href="projects/magnetic-loop-antenna.html">
+          <div class="thumb">
+            <img src="assets/img/loop-cover.svg" alt="Magnetic loop antenna" loading="lazy">
+          </div>
+          <div>
+            <p class="kind">Senior project, Aug 2026 – present</p>
+            <h3>Automatically tuned HF magnetic loop antenna</h3>
+            <p>
+              A compact loop antenna for 7–14 MHz built for Hascall-Denke. It
+              retunes itself across the band with an electrically actuated
+              capacitor and a 50 Ω matching network. Three-person team.
+            </p>
+            <p class="tools">Ansys HFSS, matching networks, prototyping</p>
+          </div>
+        </a>
+
+        <div class="grid two">
+          <a class="project" href="projects/tsal-pcb.html">
+            <div class="thumb">
+              <img src="assets/img/tsal-cover.svg" alt="Tractive System Active Light circuit board" loading="lazy">
             </div>
-            <p class="project-number">PROJECT 02</p>
-            <h2><a class="project-title-link" href="projects/capacitive-wireless-power.html">Capacitive wireless<br />power transfer</a></h2>
-            <p>Concept development for a lunar-rover charging system: resonant compensation, alignment tolerance, and coupler design.</p>
-            <ul class="tags"><li>Wireless Power</li><li>Resonance</li><li>System Design</li></ul>
-            <a class="text-link" href="projects/capacitive-wireless-power.html">View case study <span>→</span></a>
-          </article>
+            <p class="kind">Cal Poly Racing, Formula SAE Electric</p>
+            <h3>Tractive System Active Light board</h3>
+            <p>Part of the high-voltage safety system on the team's electric race car. I designed and fabricated portions of the PCB in Altium.</p>
+            <p class="tools">Altium, high-voltage safety, FSAE rules</p>
+          </a>
 
-          <article class="project project-small">
-            <div class="project-visual lab-visual">
-              <div class="scope"><span></span><span></span><span></span><span></span><b></b></div>
-              <div class="trace"></div><div class="marker">M1</div>
-              <span class="visual-label">MEASURE · ANALYZE · VALIDATE</span>
+          <a class="project" href="projects/rc-car.html">
+            <div class="thumb">
+              <img src="assets/img/rccar-cover.svg" alt="RC car with STM32 controller" loading="lazy">
             </div>
-            <p class="project-number">PROJECT 03</p>
-            <h2><a class="project-title-link" href="projects/rf-measurement-labs.html">RF measurement<br />and signal labs</a></h2>
-            <p>Hands-on work with mixing, modulation, spectrum analysis, and measurement-driven validation.</p>
-            <ul class="tags"><li>Test Equipment</li><li>RF Labs</li><li>MATLAB</li></ul>
-            <a class="text-link" href="projects/rf-measurement-labs.html">View case study <span>→</span></a>
-          </article>
+            <p class="kind">Course project, Jan – Jun 2026</p>
+            <h3>RC car embedded control system</h3>
+            <p>C firmware on an STM32 that ties together wireless control, motor drive and steering in real time.</p>
+            <p class="tools">C, STM32, PWM, timers, interrupts</p>
+          </a>
+
+          <a class="project" href="projects/otter-cpu.html">
+            <div class="thumb">
+              <img src="assets/img/otter-cover.svg" alt="Whack-A-Mole game on a VGA monitor" loading="lazy">
+            </div>
+            <p class="kind">Course project, Jan – Jun 2025</p>
+            <h3>OTTER CPU and a Whack-A-Mole game</h3>
+            <p>A working CPU written in SystemVerilog, with my own assembly program driving a VGA display and keypad.</p>
+            <p class="tools">SystemVerilog, FPGA, assembly</p>
+          </a>
+
+          <a class="project" href="projects/capacitive-wireless-power.html">
+            <div class="thumb">
+              <img src="assets/img/cwpt-cover.svg" alt="Capacitive coupler concept" loading="lazy">
+            </div>
+            <p class="kind">Concept study</p>
+            <h3>Capacitive wireless charging for a lunar rover</h3>
+            <p>Early design work on charging a rover through electric-field coupling, where gap, alignment and dust all move the resonance.</p>
+            <p class="tools">Resonant design, coupler geometry</p>
+          </a>
         </div>
-      </section>
-
-      <section class="process">
-        <p class="eyebrow">02 / How I work</p>
-        <div class="process-list">
-          <div><span>01</span><h3>Define the problem</h3><p>Turn requirements into practical RF, mechanical, and test constraints.</p></div>
-          <div><span>02</span><h3>Model & simulate</h3><p>Use calculations and HFSS to explore performance before committing to a design.</p></div>
-          <div><span>03</span><h3>Build & measure</h3><p>Validate against reality, diagnose what changed, and improve the next iteration.</p></div>
-        </div>
-      </section>
-
-      <section class="about" id="about">
-        <p class="eyebrow">03 / About</p>
-        <div><h2>I like the point where <em>theory meets the bench.</em></h2><p>My interests sit at the intersection of electromagnetics, antennas, wireless systems, and test engineering. I enjoy taking a design from first-order equations to simulation, then seeing what it really does in measurement.</p><a class="text-link" href="assets/Kai-Iniguez-Resume.pdf">Download résumé <span>↓</span></a></div>
-      </section>
-    </main>
-
-    <footer id="contact">
-      <p class="eyebrow">04 / Get in touch</p>
-      <h2>Let’s build something<br /><em>that works.</em></h2>
-      <div class="footer-links">
-        <a href="mailto:kaiiniguez27@gmail.com">kaiiniguez27@gmail.com</a>
-        <a href="https://www.linkedin.com/in/kai-iniguez" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        <a href="https://github.com/kaiiniguez27" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
-      <p class="copyright">© <span id="year"></span> Kai Iniguez</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <h2>Experience</h2>
+        <ol class="timeline">
+          <li>
+            <div class="when">Jun – Aug 2026</div>
+            <div>
+              <h3>EMC Test Engineer Intern</h3>
+              <p class="org">Hewlett Packard Enterprise</p>
+              <ul>
+                <li>Wrote Python automation with PyVISA and SCPI to run VNAs and oscilloscopes and generate reports, cutting test and report time by 75%.</li>
+                <li>Characterized coupling/decoupling networks and LISNs on a VNA, measuring insertion loss and impedance from 150 kHz to 30 MHz.</li>
+                <li>Verified an EFT/burst generator's pulse parameters with an oscilloscope.</li>
+                <li>Supported RF and EMC measurements with spectrum analyzers and in a 10-meter anechoic chamber.</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="when">Sep 2025 – Jun 2026</div>
+            <div>
+              <h3>High Voltage Subteam Member</h3>
+              <p class="org">Cal Poly Racing, Formula SAE Electric</p>
+              <ul>
+                <li>Designed and fabricated portions of the Tractive System Active Light PCB in Altium.</li>
+                <li>Worked on high-voltage wiring, safety systems and subsystem integration on the car.</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="when">Jan 2024 – present</div>
+            <div>
+              <h3>Member</h3>
+              <p class="org">Power Engineering Society, Cal Poly</p>
+            </div>
+          </li>
+          <li>
+            <div class="when">Expected May 2027</div>
+            <div>
+              <h3>B.S. Electrical Engineering</h3>
+              <p class="org">California Polytechnic State University, San Luis Obispo. 3.5 GPA, Dean's List.</p>
+              <p>Relevant courses: Phased Array Antennas (graduate), Wireless Communications, Communication Systems, Electromagnetic Waves, Control Systems, Semiconductor Device Electronics, Digital Electronics and Integrated Circuits.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <dl class="skills">
+          <div>
+            <dt>RF and antennas</dt>
+            <dd>Antenna and array design, matching networks, S-parameter and spectrum measurements, EMC testing</dd>
+          </div>
+          <div>
+            <dt>Lab equipment</dt>
+            <dd>Vector network analyzer, spectrum analyzer, oscilloscope, RF signal generator, source meter</dd>
+          </div>
+          <div>
+            <dt>Design tools</dt>
+            <dd>Ansys HFSS, Keysight ADS, LTspice, Altium, Eagle, Fusion 360</dd>
+          </div>
+          <div>
+            <dt>Programming</dt>
+            <dd>Python (PyVISA, SCPI automation), MATLAB, C, SystemVerilog, Arduino</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <h2>Get in touch</h2>
+        <p>
+          I'm looking for full-time roles in RF, antenna and test engineering
+          starting after I graduate in May 2027. Email me at
+          <a href="mailto:kaiiniguez27@gmail.com">kaiiniguez27@gmail.com</a>
+          or find me on <a href="https://www.linkedin.com/in/kai-iniguez">LinkedIn</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Kai Iniguez, 2026. Hand-built HTML and CSS, hosted on GitHub Pages.</div>
+  </footer>
+
+</body>
 </html>

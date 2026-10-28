@@ -1,29 +1,25 @@
-# Kai Iniguez Engineering Portfolio
+# kaiiniguez27.github.io
 
-A no-build static website ready for GitHub Pages. It is intentionally one small project: edit the text or replace project visuals without needing React, a paid host, or a deployment workflow.
+Kai Iniguez's portfolio. Plain HTML and CSS, no build step: edit a file, push, and GitHub Pages updates the live site at https://kaiiniguez27.github.io within a minute or two.
 
-## Before publishing
+## Layout
 
-1. In `index.html`, replace every `YOUR_EMAIL_HERE`, `YOUR_LINKEDIN`, and `YOUR_GITHUB` placeholder.
-2. Put your current resume at `assets/Kai-Iniguez-Resume.pdf`. The existing resume link will work automatically.
-3. For each project, replace the dark/diagram-style visual with an HFSS render or plot when you have one. Put images in `assets/` and use an `<img>` inside the corresponding `.project-visual` container.
-4. Update project descriptions only with results you can substantiate. This first version deliberately avoids invented gain, bandwidth, or efficiency numbers.
+```
+index.html                 home page: intro, projects, experience, skills, contact
+projects/*.html            one page per project
+css/style.css              all styling; colors and fonts are at the top
+assets/vna.svg             the animated network-analyzer trace in the header
+assets/img/                project images (labeled placeholders until replaced)
+assets/Kai-Iniguez-Resume.pdf
+.nojekyll                  tells GitHub to serve the files as-is
+```
 
-## Publish with GitHub Pages
+## Common edits
 
-1. Create a GitHub repository named `kaiiniguez.github.io` (replace `kaiiniguez` with your actual GitHub username if different).
-2. Upload the **contents** of this folder—the files `index.html`, `style.css`, `script.js`, and `assets/` should be at the repository root.
-3. In the repository, open **Settings → Pages**. Under **Build and deployment**, choose **Deploy from a branch**, then select `main` and `/(root)`.
-4. After GitHub publishes it, your site will be at `https://YOUR_GITHUB_USERNAME.github.io`.
+**Replace a placeholder image.** Each gray box says what belongs there and its file name. Put your image in `assets/img/` (for example `array-pattern.png`) and change the matching `src` in the HTML. Export at about 1600 px wide and keep each file under ~500 KB.
 
-## Best project page formula
+**Add results.** In-progress project pages have a "Results" section and an HTML comment showing where numbers go. Add them as `<ul class="numbers"><li><strong>12.4 dBi</strong>peak gain</li></ul>`.
 
-For each important project, use this sequence:
+**Add a project.** Copy a page in `projects/`, then copy one `<a class="project">` block in `index.html` and point it at the new page. Update the Previous/Next links on the neighbouring pages.
 
-1. Goal and constraints
-2. Your specific contribution
-3. Design approach and key decisions
-4. 3–6 selected figures (not every raw plot)
-5. Results and next iteration
-
-When you have several good projects, the next improvement should be separate detail pages for each project—not adding more effects to the homepage.
+**Update the résumé.** Replace `assets/Kai-Iniguez-Resume.pdf`, keeping the same file name.

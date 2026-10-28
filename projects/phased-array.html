@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>28 GHz phased array for 5G beam steering | Kai Iniguez</title>
+  <meta name="description" content="A 16-element mmWave antenna array modeled in Ansys HFSS, used to study how far a beam can be steered electronically and what it costs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="home" href="../">Kai Iniguez</a>
+      <nav aria-label="Main">
+        <a href="../#projects">Projects</a>
+        <a href="../#experience">Experience</a>
+        <a class="optional" href="../#skills">Skills</a>
+        <a href="../assets/Kai-Iniguez-Resume.pdf">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="../#projects">All projects</a>
+
+    <header class="detail-head">
+      <h1 class="display">28 GHz phased array for 5G beam steering</h1>
+      <p class="lede">A 16-element mmWave antenna array modeled in Ansys HFSS, used to study how far a beam can be steered electronically and what it costs.</p>
+    </header>
+
+    <figure class="hero-img">
+      <img src="../assets/img/array-cover.svg" alt="28 GHz phased array">
+    </figure>
+
+    <div class="detail-body">
+      <article class="prose">
+        <p class="status">This project is in progress. I'll add measured and simulated results as I finish each stage.</p>
+
+        <h2>Why this project</h2>
+        <p>Phones and base stations working at 28 GHz can't rely on a fixed antenna pattern: the path loss is high, so they point narrow beams at each user and steer them as people move. I wanted to see those tradeoffs directly rather than only in equations, so I'm building the array up in simulation one piece at a time, starting from a single element.</p>
+
+        <h2>What I'm doing</h2>
+        <ul>
+          <li><strong>Single element.</strong> I started from a stacked microstrip patch, which gives more bandwidth than a single patch, and tuned it in HFSS for a good match around 28 GHz.</li>
+          <li><strong>The array.</strong> Arranging 16 elements in a 4 × 4 grid and setting the element spacing so the beam can scan without grating lobes.</li>
+          <li><strong>Beam steering.</strong> Applying progressive phase shifts across the elements and tracking gain, beamwidth, sidelobe level and scan loss at each steering angle.</li>
+          <li><strong>When things go wrong.</strong> Adding phase-shifter errors and switching off individual elements to see how gracefully the beam degrades.</li>
+          <li><strong>Real constraints.</strong> Relating the results to what actually limits 5G base-station and handset designs: size, element count and cost.</li>
+        </ul>
+
+        <figure class="pair">
+          <figure><img src="../assets/img/array-element.svg" alt="Single stacked-patch element and its S11"><figcaption>Single stacked-patch element and its S11.</figcaption></figure>
+          <figure><img src="../assets/img/array-pattern.svg" alt="Beam patterns at several steering angles"><figcaption>Beam patterns at several steering angles.</figcaption></figure>
+        </figure>
+
+        <h2>Results so far</h2>
+        <!-- Add your numbers here once you have them, for example:
+             <ul class="numbers"><li><strong>XX dBi</strong>peak realized gain at broadside</li> ... </ul>
+             Bandwidth, gain, max scan angle and scan loss are the ones recruiters look for. -->
+        <p>Coming soon: element bandwidth, broadside gain, and scan loss across the steering range.</p>
+
+        <h2>Next</h2>
+        <p>Designing a feed network for the array and comparing simulated patterns against the array-factor model from my phased-array course.</p>
+      </article>
+
+      <aside>
+        <table class="specs">
+          <tr><th>Context</th><td>Independent project, Aug 2026 – present</td></tr>
+          <tr><th>Frequency</th><td>28 GHz (5G FR2)</td></tr>
+          <tr><th>Array</th><td>4 × 4, 16 elements</td></tr>
+          <tr><th>Tools</th><td>Ansys HFSS, MATLAB</td></tr>
+          <tr><th>Status</th><td>In progress</td></tr>
+        </table>
+
+      </aside>
+    </div>
+
+    <nav class="next" aria-label="More projects">
+      <a href="capacitive-wireless-power.html">Previous: Lunar rover wireless power</a>
+      <a href="magnetic-loop-antenna.html">Next: HF magnetic loop antenna</a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Kai Iniguez, 2026. Hand-built HTML and CSS, hosted on GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>

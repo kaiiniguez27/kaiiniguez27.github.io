@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RC car embedded control system | Kai Iniguez</title>
+  <meta name="description" content="Firmware in C for an STM32 that drives, steers and responds to a wireless controller in real time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="home" href="../">Kai Iniguez</a>
+      <nav aria-label="Main">
+        <a href="../#projects">Projects</a>
+        <a href="../#experience">Experience</a>
+        <a class="optional" href="../#skills">Skills</a>
+        <a href="../assets/Kai-Iniguez-Resume.pdf">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="../#projects">All projects</a>
+
+    <header class="detail-head">
+      <h1 class="display">RC car embedded control system</h1>
+      <p class="lede">Firmware in C for an STM32 that drives, steers and responds to a wireless controller in real time.</p>
+    </header>
+
+    <figure class="hero-img">
+      <img src="../assets/img/rccar-cover.svg" alt="RC car control system">
+    </figure>
+
+    <div class="detail-body">
+      <article class="prose">
+        <h2>Overview</h2>
+        <p>The goal was a car that feels responsive to drive, which meant the firmware had to react to the controller, update the motor and steering, and handle the peripherals without anything blocking anything else.</p>
+
+        <h2>How it works</h2>
+        <ul>
+          <li><strong>Motor and steering.</strong> Hardware timers generate PWM for the motor driver and steering servo, so the outputs stay steady no matter what the CPU is doing.</li>
+          <li><strong>Inputs.</strong> Controller commands come in over serial, with interrupts keeping the car responsive to them.</li>
+          <li><strong>Integration.</strong> I brought up and debugged the wireless, motor-driver and steering hardware together, tracking down the issues that only showed up once everything was connected.</li>
+        </ul>
+        <!-- Add: the hardest bug you found and how you found it. That's the most convincing paragraph on a page like this. -->
+
+        <figure class="pair">
+          <figure><img src="../assets/img/rccar-block.svg" alt="Firmware and hardware block diagram"><figcaption>Firmware and hardware block diagram.</figcaption></figure>
+          <figure><img src="../assets/img/rccar-scope.svg" alt="PWM output on the scope"><figcaption>PWM output on the scope.</figcaption></figure>
+        </figure>
+      </article>
+
+      <aside>
+        <table class="specs">
+          <tr><th>Context</th><td>Course project, Jan – Jun 2026</td></tr>
+          <tr><th>MCU</th><td>STM32</td></tr>
+          <tr><th>Tools</th><td>C, STM32 toolchain, oscilloscope</td></tr>
+          <tr><th>Topics</th><td>GPIO, PWM, timers, interrupts, UART</td></tr>
+        </table>
+
+      </aside>
+    </div>
+
+    <nav class="next" aria-label="More projects">
+      <a href="tsal-pcb.html">Previous: TSAL board</a>
+      <a href="otter-cpu.html">Next: OTTER CPU</a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Kai Iniguez, 2026. Hand-built HTML and CSS, hosted on GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>

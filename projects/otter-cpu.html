@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OTTER CPU and a Whack-A-Mole game | Kai Iniguez</title>
+  <meta name="description" content="A complete CPU written in SystemVerilog and run on an FPGA, with my own assembly program on top of it driving a VGA display and keypad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a class="home" href="../">Kai Iniguez</a>
+      <nav aria-label="Main">
+        <a href="../#projects">Projects</a>
+        <a href="../#experience">Experience</a>
+        <a class="optional" href="../#skills">Skills</a>
+        <a href="../assets/Kai-Iniguez-Resume.pdf">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <a class="back" href="../#projects">All projects</a>
+
+    <header class="detail-head">
+      <h1 class="display">OTTER CPU and a Whack-A-Mole game</h1>
+      <p class="lede">A complete CPU written in SystemVerilog and run on an FPGA, with my own assembly program on top of it driving a VGA display and keypad.</p>
+    </header>
+
+    <figure class="hero-img">
+      <img src="../assets/img/otter-cover.svg" alt="OTTER CPU">
+    </figure>
+
+    <div class="detail-body">
+      <article class="prose">
+        <h2>Overview</h2>
+        <p>The OTTER is the RISC-V-based teaching processor at Cal Poly. Over the course I built it up module by module: the ALU, register file, datapath, and the control unit that decodes instructions and sequences everything else.</p>
+
+        <h2>What I built</h2>
+        <ul>
+          <li><strong>The CPU.</strong> A modular SystemVerilog design with a separate datapath, control unit and ALU, each tested on its own before being put together.</li>
+          <li><strong>Software.</strong> A custom instruction set and assembly language, and the game program written in it.</li>
+          <li><strong>I/O.</strong> VGA output and keypad input wired into the processor so the game could run with no computer attached.</li>
+          <li><strong>The game.</strong> Whack-A-Mole, running entirely on hardware I designed.</li>
+        </ul>
+
+        <figure class="pair">
+          <figure><img src="../assets/img/otter-datapath.svg" alt="OTTER datapath"><figcaption>OTTER datapath.</figcaption></figure>
+          <figure><img src="../assets/img/otter-board.svg" alt="FPGA board with keypad and monitor"><figcaption>FPGA board with keypad and monitor.</figcaption></figure>
+        </figure>
+      </article>
+
+      <aside>
+        <table class="specs">
+          <tr><th>Context</th><td>Course project, Jan – Jun 2025</td></tr>
+          <tr><th>Tools</th><td>SystemVerilog, Vivado, FPGA board</td></tr>
+          <tr><th>Topics</th><td>Datapath, control unit, ALU, I/O</td></tr>
+        </table>
+
+      </aside>
+    </div>
+
+    <nav class="next" aria-label="More projects">
+      <a href="rc-car.html">Previous: RC car control system</a>
+      <a href="capacitive-wireless-power.html">Next: Lunar rover wireless power</a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Kai Iniguez, 2026. Hand-built HTML and CSS, hosted on GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>
