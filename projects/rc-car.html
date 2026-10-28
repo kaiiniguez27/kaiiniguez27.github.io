@@ -33,8 +33,7 @@
     </header>
 
     <figure class="hero-img natural">
-      <a href="../assets/img/rccar-schematic.png"><img src="../assets/img/rccar-schematic.png" alt="System schematic: Nucleo L4A6ZG board connected to an HM-10 Bluetooth module, Quicrun 1060 ESC, SG90 steering servo, headlight LEDs, 7.4 V LiPo battery and Tamiya 540 motor" width="1400" height="737"></a>
-      <figcaption>System schematic. Click to open full size.</figcaption>
+      <img src="../assets/img/rccar-photo.jpg" alt="The finished RC car: wooden stick chassis with the Nucleo board, ESC, Bluetooth module, LiPo battery, motor, steering servo and LED headlights" width="984" height="975">
     </figure>
 
     <div class="detail-body">
@@ -50,6 +49,11 @@
           <li><strong>Gentle throttle.</strong> Each forward or reverse command steps the ESC pulse by 2 µs, between 1550 and 1700 µs forward and 1400 and 1300 µs reverse, so the car speeds up gradually instead of jumping to full power.</li>
           <li><strong>Safe start-up.</strong> On power-up the firmware sends the ESC a neutral 1500 µs pulse, centers the steering and waits 3 seconds for the ESC to arm before it accepts any commands.</li>
         </ul>
+
+        <figure>
+          <a href="../assets/img/rccar-schematic.png"><img src="../assets/img/rccar-schematic.png" alt="System schematic: Nucleo L4A6ZG board connected to an HM-10 Bluetooth module, Quicrun 1060 ESC, SG90 steering servo, headlight LEDs, 7.4 V LiPo battery and Tamiya 540 motor" width="1400" height="737"></a>
+          <figcaption>System schematic. Click to open full size.</figcaption>
+        </figure>
 
         <h2>My part</h2>
         <p>I wrote the HM-10 Bluetooth driver and the command interface that connects it to the motor and servo modules, so each command from the phone triggers the right action and sends a confirmation back to the phone. I also wrote the software architecture and behavior sections of our report. Dante Wong wrote the ESC and motor control and built the rear drivetrain; Chance Kim wrote the steering control and led the chassis build.</p>
