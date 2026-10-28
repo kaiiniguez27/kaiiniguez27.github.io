@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OTTER CPU and a Whack-A-Mole game | Kai Iniguez</title>
-  <meta name="description" content="A complete CPU written in SystemVerilog and run on an FPGA, with my own assembly program on top of it driving a VGA display and keypad.">
+  <meta name="description" content="A complete CPU written in SystemVerilog and run on an FPGA, with my own Whack-A-Mole game running on it, drawn to a VGA monitor and played with the board's buttons.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=5">
+  <link rel="stylesheet" href="../css/style.css?v=6">
 </head>
 <body>
 
@@ -29,11 +29,11 @@
 
     <header class="detail-head">
       <h1 class="display">OTTER CPU and a Whack-A-Mole game</h1>
-      <p class="lede">A complete CPU written in SystemVerilog and run on an FPGA, with my own assembly program on top of it driving a VGA display and keypad.</p>
+      <p class="lede">A complete CPU written in SystemVerilog and run on an FPGA, with my own Whack-A-Mole game running on it, drawn to a VGA monitor and played with the board's buttons.</p>
     </header>
 
-    <figure class="hero-img">
-      <img src="../assets/img/otter-cover.svg" alt="OTTER CPU">
+    <figure class="hero-img natural">
+      <img src="../assets/img/otter-game.jpg" alt="Whack-A-Mole running on a VGA monitor connected to a Basys 3 FPGA board, with the score on the board's display" width="1672" height="941">
     </figure>
 
     <div class="detail-body">
@@ -43,22 +43,30 @@
 
         <h2>What I built</h2>
         <ul>
-          <li><strong>The CPU.</strong> A modular SystemVerilog design with a separate datapath, control unit and ALU, each tested on its own before being put together.</li>
+          <li><strong>The CPU.</strong> A modular SystemVerilog design with a separate datapath, control unit and ALU, each tested on its own before being put together. It also handles interrupts through a CSR module.</li>
           <li><strong>Software.</strong> A custom instruction set and assembly language, and the game program written in it.</li>
-          <li><strong>I/O.</strong> VGA output and keypad input wired into the processor so the game could run with no computer attached.</li>
+          <li><strong>I/O.</strong> VGA output and the board's buttons and seven-segment display wired into the processor's I/O bus, so the game runs with no computer attached.</li>
           <li><strong>The game.</strong> Whack-A-Mole, running entirely on hardware I designed.</li>
         </ul>
 
-        <figure class="pair">
-          <figure><img src="../assets/img/otter-datapath.svg" alt="OTTER datapath"><figcaption>OTTER datapath.</figcaption></figure>
-          <figure><img src="../assets/img/otter-board.svg" alt="FPGA board with keypad and monitor"><figcaption>FPGA board with keypad and monitor.</figcaption></figure>
+        <figure>
+          <a href="../assets/img/otter-datapath.png"><img src="../assets/img/otter-datapath.png" alt="Block diagram of the OTTER CPU: program counter, memory, register file, immediate generator, ALU, branch logic, CSR and control unit" width="1132" height="855"></a>
+          <figcaption>The OTTER datapath. The control unit's FSM and decoder drive the multiplexer selects and write enables; the CSR block handles interrupts. Click to open full size.</figcaption>
+        </figure>
+
+        <h2>Playing it</h2>
+        <p>Moles pop up from the holes on the monitor and you whack them with the push buttons on the Basys 3. Another button resets the game, and the score shows both on screen and on the board's seven-segment display.</p>
+
+        <figure>
+          <img src="../assets/img/otter-controls.png" alt="Basys 3 board with the whack buttons, reset button and score display labeled" width="1215" height="551">
+          <figcaption>Controls on the Basys 3.</figcaption>
         </figure>
       </article>
 
       <aside>
         <table class="specs">
           <tr><th>Context</th><td>Course project, Jan – Jun 2025</td></tr>
-          <tr><th>Tools</th><td>SystemVerilog, Vivado, FPGA board</td></tr>
+          <tr><th>Tools</th><td>SystemVerilog, Vivado, Basys 3 (Artix-7 FPGA)</td></tr>
           <tr><th>Topics</th><td>Datapath, control unit, ALU, I/O</td></tr>
         </table>
 

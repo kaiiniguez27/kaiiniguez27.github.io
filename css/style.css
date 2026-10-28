@@ -35,7 +35,7 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 a { color: var(--probe); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
@@ -459,3 +459,6 @@ figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; max-wid
   color: var(--ink);
 }
 .courses li { padding: 0.15rem 0; }
+
+/* cover image shown at its own shape instead of cropped */
+.hero-img.natural img { aspect-ratio: auto; }
