@@ -55,9 +55,6 @@
           <figcaption>System schematic. Click to open full size.</figcaption>
         </figure>
 
-        <h2>My part</h2>
-        <p>I wrote the HM-10 Bluetooth driver and the command interface that connects it to the motor and servo modules, so each command from the phone triggers the right action and sends a confirmation back to the phone. I also wrote the software architecture and behavior sections of our report. Dante Wong wrote the ESC and motor control and built the rear drivetrain; Chance Kim wrote the steering control and led the chassis build.</p>
-
         <h2>Commands</h2>
         <table class="data">
           <thead><tr><th>Send</th><th>What the car does</th></tr></thead>
@@ -73,8 +70,8 @@
         <h2>Firmware structure</h2>
         <p>The code is split into modules by peripheral: <code>bluetooth.c</code> for the UART and receive buffer, <code>timer.c</code> for the ESC PWM, <code>servo.c</code> for steering, <code>led.c</code> for the headlights and <code>delay.c</code> for SysTick timing. <code>main.c</code> initializes everything, then loops forever reading commands from the buffer and dispatching them.</p>
 
-        <figure class="narrow">
-          <img src="../assets/img/rccar-flowchart.png" alt="Flowchart: initialize, set safe start-up state, wait for Bluetooth input, read command, then stop, toggle headlights, steer, drive or ignore invalid input, and repeat" width="828" height="1061">
+        <figure>
+          <img src="../assets/img/rccar-flow.png" alt="Flowchart: initialize, set safe start-up state, wait for Bluetooth input, read command, decide between stop, headlights, steer, drive or ignore, check power state, and loop until power off" width="724" height="646">
           <figcaption>Main program flow.</figcaption>
         </figure>
 
@@ -90,7 +87,7 @@
       <aside>
         <table class="specs">
           <tr><th>Context</th><td>EE 329 final project, Spring 2026</td></tr>
-          <tr><th>Team</th><td>Kai Iniguez, Chance Kim, Dante Wong</td></tr>
+          <tr><th>Team</th><td>3 students</td></tr>
           <tr><th>My role</th><td>Bluetooth firmware and command interface</td></tr>
           <tr><th>MCU</th><td>STM32L4A6ZG (Nucleo board)</td></tr>
           <tr><th>Tools</th><td>C, STM32CubeIDE, HAL</td></tr>
